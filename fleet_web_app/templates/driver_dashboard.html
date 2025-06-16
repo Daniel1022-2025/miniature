@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Driver Dashboard</title>
+</head>
+<body>
+    <h2>Welcome {{ session['user'] }}</h2>
+
+    <h3>Daily Log</h3>
+    <form method="POST" action="{{ url_for('submit_log') }}">
+        Start Time: <input type="text" name="start_time" required><br>
+        Stop Time: <input type="text" name="stop_time" required><br>
+        Start Mileage: <input type="number" name="start_mileage" required><br>
+        Stop Mileage: <input type="number" name="stop_mileage" required><br>
+        Fuel (Litres): <input type="number" name="fuel_litres" step="0.01" required><br>
+        Purpose: <input type="text" name="purpose" required><br><br>
+        <button type="submit">Submit Log</button>
+    </form>
+
+    <h3>Mechanical Request</h3>
+    <form method="POST" action="{{ url_for('mechanical_request') }}">
+        Issue: <input type="text" name="issue" required><br><br>
+        <button type="submit">Submit Request</button>
+    </form>
+
+    <br><a href="{{ url_for('logout') }}">Logout</a>
+
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul>
+          {% for message in messages %}
+            <li>{{ message }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+</body>
+</html>

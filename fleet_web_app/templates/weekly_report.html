@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Weekly Report</title>
+</head>
+<body>
+    <h2>Weekly Report</h2>
+
+    <table border="1">
+        <tr>
+            <th>Driver</th>
+            <th>Week</th>
+            <th>Total KM</th>
+            <th>Fuel Used (L)</th>
+            <th>Efficiency (KM/L)</th>
+        </tr>
+        {% for row in report %}
+        <tr>
+            <td>{{ row[0] }}</td>
+            <td>{{ row[1] }}</td>
+            <td>{{ row[2] }}</td>
+            <td>{{ row[3] }}</td>
+            <td>{{ row[4] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <br><a href="{{ url_for('dashboard') }}">Back to Dashboard</a>
+</body>
+</html>
